@@ -8,11 +8,13 @@
         <h1 class="h3 mb-0 fw-bold">Courses</h1>
         <small class="text-white-50">Manage and view all registered courses</small>
     </div>
+    @admin
     <div>
         <a href="{{ url('/courses/create') }}" class="btn btn-light btn-sm shadow-sm">
             <i class="bi bi-plus-lg me-1"></i> Add New Course
         </a>
     </div>
+    @endadmin
 </div>
 
 <div class="card shadow-lg border-0" style="border-radius: 15px; overflow: hidden;">
@@ -46,7 +48,9 @@
                            Hours
                         </th>
 
+                        @admin
                         <th scope="col" class=" py-3  fw-semibold text-dark">Actions</th>
+                        @endadmin
                     </tr>
                 </thead>
                 <tbody>
@@ -65,6 +69,7 @@
                             <td class=" py-3 ">{{ $course->hours }}</td>
 
 
+                            @admin
                             <td class="py-3 ">
                                 <form action="{{ route('courses.edit', $course->id) }}" method="GET" class="d-inline">
                                     <button type="submit" class="btn btn-sm btn-success">Edit</button>
@@ -77,6 +82,7 @@
                                     </button>
                                 </form>
                             </td>
+                            @endadmin
 
                         </tr>
                     @empty

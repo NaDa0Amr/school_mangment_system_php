@@ -284,17 +284,20 @@
 
               </a>
             </li>
-               <li class="sidebar-item">
-      <a class="sidebar-link" href="javascript:void(0)">
-                <div class="d-flex align-items-center gap-3">
-                  <span class="d-flex">
-        <i class="ti ti-user"></i>
-                  </span>
-                  <span class="hide-menu">users</span>
-                </div>
-
-              </a>
-            </li>
+            @auth
+              @if(Auth::user()->isAdmin())
+              <li class="sidebar-item">
+                <a class="sidebar-link" href="{{ route('users.index') }}">
+                  <div class="d-flex align-items-center gap-3">
+                    <span class="d-flex">
+                      <i class="ti ti-users"></i>
+                    </span>
+                    <span class="hide-menu">Users</span>
+                  </div>
+                </a>
+              </li>
+              @endif
+            @endauth
         </nav>
         <!-- End Sidebar navigation -->
       </div>

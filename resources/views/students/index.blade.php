@@ -8,11 +8,13 @@
         <h1 class="h3 mb-0 fw-bold">Students</h1>
         <small class="text-white-50">Manage and view all registered students</small>
     </div>
+    @admin
     <div>
         <a href="{{ url('/students/create') }}" class="btn btn-light btn-sm shadow-sm">
             <i class="bi bi-plus-lg me-1"></i> Add New Student
         </a>
     </div>
+    @endadmin
 </div>
 
 <div class="card shadow-lg border-0" style="border-radius: 15px; overflow: hidden;">
@@ -51,7 +53,9 @@
                         <th scope="col" class=" py-3  fw-semibold text-dark">
                             Doctor Name
                         </th>
+                        @admin
                         <th scope="col" class=" py-3  fw-semibold text-dark">Actions</th>
+                        @endadmin
                     </tr>
                 </thead>
                 <tbody>
@@ -70,9 +74,14 @@
                             <td class=" py-3 ">{{ $student->address }}</td>
                             <td class=" py-3 ">{{ $student->gender }}</td>
                             <td class="py-3 ">
-                               {{ $student->doctor->name }}
+                                @if(!$student->doctor)
+                                    <span class="text-muted">No Doctor Assigned</span>
+                                @else
+                                    {{ $student->doctor->name }}
+                                @endif
                             </td>
 
+                            @admin
                             <td class="py-3 ">
                                 <div class="btn btn-outline-primary">
                                     <a href="{{ route('students.courses.index', $student) }}" class="text-decoration-none">Courses</a>
@@ -88,6 +97,7 @@
                                     </button>
                                 </form>
                             </td>
+                            @endadmin
 
                         </tr>
                     @empty

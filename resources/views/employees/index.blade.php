@@ -8,11 +8,13 @@
 		<h1 class="h3 mb-0 fw-bold">Employees</h1>
 		<small class="text-white-50">Manage and view all employees</small>
 	</div>
+	@admin
 	<div>
 		<a href="{{ url('/employees/create') }}" class="btn btn-light btn-sm shadow-sm">
 			Add New Employee
 		</a>
 	</div>
+	@endadmin
 </div>
 
 <div class="card shadow-lg border-0" style="border-radius: 15px; overflow: hidden;">
@@ -39,7 +41,9 @@
 						<th scope="col" class=" py-3 fw-semibold text-dark">Name</th>
 						<th scope="col" class=" py-3 fw-semibold text-dark">Manager</th>
 						<th scope="col" class=" py-3 fw-semibold text-dark">Department</th>
+						@admin
 						<th scope="col" class=" py-3 fw-semibold text-dark">Actions</th>
+						@endadmin
 					</tr>
 				</thead>
 				<tbody>
@@ -55,6 +59,7 @@
 							<td class="py-3"><span class="badge bg-info text-dark">Manager</span></td>
 							@endif
 							<td class=" py-3">{{ $employee->department->name }}</td>
+							@admin
 							<td class="py-3 ">
 								<form action="{{ route('employees.edit', $employee->id) }}" method="GET" class="d-inline">
 									<button type="submit" class="btn btn-sm btn-success">Edit</button>
@@ -65,6 +70,7 @@
 									<button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Delete this employee?')">Delete</button>
 								</form>
 							</td>
+							@endadmin
 						</tr>
 					@empty
 						<tr>

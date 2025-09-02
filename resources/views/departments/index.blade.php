@@ -8,11 +8,13 @@
 		<h1 class="h3 mb-0 fw-bold">Departments</h1>
 		<small class="text-white-50">Manage and view all departments</small>
 	</div>
+	@admin
 	<div>
 		<a href="{{ route('departments.create') }}" class="btn btn-light btn-sm shadow-sm">
 			<i class="bi bi-plus-lg me-1"></i> Add New Department
 		</a>
 	</div>
+	@endadmin
 </div>
 
 <div class="card shadow-lg border-0" style="border-radius: 15px; overflow: hidden;">
@@ -37,7 +39,9 @@
 					<tr>
 						<th scope="col" class=" py-3 fw-semibold text-dark">#</th>
 						<th scope="col" class=" py-3 fw-semibold text-dark">Name</th>
+						@admin
 						<th scope="col" class=" py-3 fw-semibold text-dark">Actions</th>
+						@endadmin
 					</tr>
 				</thead>
 				<tbody>
@@ -47,6 +51,7 @@
 								<span class="badge bg-secondary-subtle text-secondary rounded-circle px-2 py-1">{{ $loop->iteration }}</span>
 							</td>
 							<td class=" py-3">{{ $department->name }}</td>
+							@admin
 							<td class="py-3 ">
 								<form action="{{ route('departments.edit', $department) }}" method="GET" class="d-inline">
 									<button type="submit" class="btn btn-sm btn-success">Edit</button>
@@ -57,6 +62,7 @@
 									<button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Delete this department?')">Delete</button>
 								</form>
 							</td>
+							@endadmin
 						</tr>
 					@empty
 						<tr>
